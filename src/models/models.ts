@@ -3,4 +3,5 @@ export interface INews {
   title: string;
   imageUrl: string,
   summary: string,
+  url: string
 }

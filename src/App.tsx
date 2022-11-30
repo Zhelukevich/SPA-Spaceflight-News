@@ -1,16 +1,23 @@
 import React, { useEffect } from 'react';
-import { useAppDispatch } from './hooks';
+import { News } from './components/News';
+import { useAppDispatch, useAppSelector } from './hooks';
 import { fetchNews } from './store/actions/newsActions';
+import NewsSlice from './store/slice/newsSlice';
 
 function App() {
   const dispatch = useAppDispatch()
+  const { error, loading, news } = useAppSelector(state => state.news)
 
   useEffect(() => {
     dispatch(fetchNews())
   }, [])
 
   return (
-    <div>hello</div>
+    <ul>
+      {
+        news.map(news => <News key={news.id} news={news} />)
+      }
+    </ul>
   );
 }
 
