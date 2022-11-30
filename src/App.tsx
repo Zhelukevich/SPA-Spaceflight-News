@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { News } from './components/News';
+import { Layout } from './components/Layout';
 import { useAppDispatch, useAppSelector } from './hooks';
 import { fetchNews } from './store/actions/newsActions';
-import NewsSlice from './store/slice/newsSlice';
+import styles from './app.module.css'
 
 function App() {
   const dispatch = useAppDispatch()
@@ -13,11 +14,21 @@ function App() {
   }, [])
 
   return (
-    <ul>
+    <Layout>
       {
-        news.map(news => <News key={news.id} news={news} />)
+        loading && <span className={styles.loading}>Loading...</span>
       }
-    </ul>
+
+      {
+        error && <span className={styles.error}>{error}</span>
+      }
+
+      <ul className={styles.list}>
+        {
+          news.map(news => <News key={news.id} news={news} />)
+        }
+      </ul>
+    </Layout>
   );
 }
 

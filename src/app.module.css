@@ -1,0 +1,23 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
+  gap: 20px;
+  padding: 100px 0;
+}
+
+.loading {
+  display: block;
+  margin-top: 20px;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.error {
+  display: block;
+  margin-top: 20px;
+  font-size: 2rem;
+  color: red;
+  font-weight: 700;
+  text-align: center;
+}

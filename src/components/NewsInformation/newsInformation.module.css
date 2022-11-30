@@ -1,0 +1,22 @@
+.information {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  transition: color .2s linear;
+}
+
+.title:hover {
+  color: rgb(0, 0, 133);
+}
+
+.text {
+  margin: 0;
+  font-size: .875rem;
+}

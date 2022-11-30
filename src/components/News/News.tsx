@@ -1,5 +1,7 @@
-import React from 'react'
-import { INews } from '../../models/models'
+import React from 'react';
+import { INews } from '../../models/models';
+import { NewsInformation } from '../NewsInformation';
+import styles from './news.module.css';
 
 
 interface INewsProps {
@@ -8,11 +10,15 @@ interface INewsProps {
 
 export function News({ news }: INewsProps) {
   return (
-    <li>
-      <h2>{news.title}</h2>
-      <p>{news.summary}</p>
-      <img src={news.imageUrl} alt="Spaceflight" />
-      <a href={news.url}>Read the news</a>
+    <li className={styles.item}>
+      <div>
+        <img
+          src={news.imageUrl}
+          alt="Spaceflight"
+          className={styles.img}
+        />
+      </div>
+      <NewsInformation news={news} />
     </li>
   )
 }
