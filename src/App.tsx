@@ -8,8 +8,12 @@ import styles from './app.module.css'
 function App() {
   const dispatch = useAppDispatch()
   const { error, loading, news } = useAppSelector(state => state.news)
+  console.log(news);
+
+
 
   useEffect(() => {
+    news
     dispatch(fetchNews())
   }, [])
 

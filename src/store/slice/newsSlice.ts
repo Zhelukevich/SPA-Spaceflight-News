@@ -12,7 +12,7 @@ interface NewsState {
 const initialState: NewsState = {
   loading: false,
   error: '',
-  news: []
+  news: [],
 }
 
 export const NewsSlice = createSlice({
@@ -33,10 +33,29 @@ export const NewsSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+
+    deleteNews: (state, action: PayloadAction<number>) => {
+      let id = action.payload;
+
+      state.news = state.news.filter((item) => {
+        return item.id !== id;
+      });
+    },
+
+    setFeature: (state, action: PayloadAction<{ feature: boolean; id: number }>) => {
+      // const index = state.findIndex((news) => news.id === action.payload.id);
+      // state[index].feature = action.payload.feature;
+      const toggleNews = state.news.find(news => news.id === action.payload.id)
+      if (toggleNews !== undefined) {
+        toggleNews.feature = !toggleNews?.feature
+      }
+
+    },
+
   }
 })
 
-export const { fetching, fetchSuccess, fetchError } = NewsSlice.actions;
+export const { fetching, fetchSuccess, fetchError, deleteNews, setFeature } = NewsSlice.actions;
 
 export const news = (state: RootState) => state.news;
 

@@ -1,7 +1,8 @@
 export interface INews {
-  id: string;
+  id: number;
   title: string;
   imageUrl: string,
   summary: string,
-  url: string
+  url: string;
+  feature: boolean
 }

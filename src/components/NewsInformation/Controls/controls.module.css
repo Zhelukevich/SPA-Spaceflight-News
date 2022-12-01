@@ -1,0 +1,25 @@
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.btn {
+  width: 70px;
+  height: 25px;
+  border: 2px solid black;
+  transition: color .2s linear, background-color .2s linear;
+}
+
+.btn:hover {
+  color: white;
+  background-color: black;
+}
+
+.likeBtn:hover path {
+  fill: red;
+}
+
+/* .likeBtnRed path {
+  fill: red;
+} */

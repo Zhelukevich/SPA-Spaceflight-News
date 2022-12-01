@@ -19,4 +19,5 @@
 .text {
   margin: 0;
   font-size: .875rem;
+  margin-bottom: 10px;
 }
