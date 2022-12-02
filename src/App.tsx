@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { News } from './components/News';
 import { Layout } from './components/Layout';
 import { useAppDispatch, useAppSelector } from './hooks';
@@ -9,6 +9,11 @@ import { Header } from './components/Header';
 function App() {
   const dispatch = useAppDispatch()
   const { error, loading, news } = useAppSelector(state => state.news)
+  const [filtered, setFiltered] = useState(news);
+
+  useEffect(() => {
+    setFiltered(news)
+  }, [news])
 
   useEffect(() => {
     dispatch(fetchNews())
@@ -16,14 +21,14 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header setFiltered={setFiltered} />
       <Layout>
         {loading && <span className={styles.loading}>Loading...</span>}
 
         {error && <span className={styles.error}>{error}</span>}
 
         <ul className={styles.list}>
-          {news.map(news => <News key={news.id} news={news} />)}
+          {filtered.map(news => <News key={news.id} news={news} />)}
         </ul>
       </Layout>
     </>

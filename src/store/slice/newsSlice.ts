@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ListFormat } from "typescript";
 import { INews } from "../../models/models";
 import { RootState } from "../store";
 
@@ -6,14 +7,18 @@ interface NewsState {
   loading: boolean;
   error: string;
   news: INews[];
+  // filtered: INews[]
 }
-
+const NEWS_KEY = 'news'
 
 const initialState: NewsState = {
+  news: JSON.parse(localStorage.getItem(NEWS_KEY) ?? '[]'),
   loading: false,
   error: '',
-  news: [],
+  // filtered: []
 }
+
+
 
 export const NewsSlice = createSlice({
   name: 'news',
@@ -27,6 +32,7 @@ export const NewsSlice = createSlice({
     fetchSuccess: (state, action: PayloadAction<INews[]>) => {
       state.loading = false;
       state.news = action.payload;
+      localStorage.setItem(NEWS_KEY, JSON.stringify(state.news))
     },
 
     fetchError: (state, action: PayloadAction<Error>) => {
@@ -43,12 +49,19 @@ export const NewsSlice = createSlice({
     },
 
     featuredNews: (state, action: PayloadAction<{ featured: boolean; id: number }>) => {
-      const toggleNews = state.news.find(news => news.id === action.payload.id)
+      const toggleNews = state.news.find(news => news.id === action.payload.id);
+
       if (toggleNews !== undefined) {
         toggleNews.featured = !toggleNews?.featured
       }
-
     },
+
+    // filteredNews: (state, action: PayloadAction<INews[]>) => {
+    //   state.filtered = [...state.news].filter(news => news.featured === true)
+    //   state.news = state.filtered
+    // }
+
+
 
   }
 })
