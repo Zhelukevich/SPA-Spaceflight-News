@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import classNames from 'classnames';
+import React, { useEffect, useState } from 'react'
 import { useAppDispatch } from '../../../hooks';
 import { INews } from '../../../models/models';
-import { deleteNews, setFeature } from '../../../store/slice/newsSlice';
+import { deleteNews, featuredNews } from '../../../store/slice/newsSlice';
 import styles from './controls.module.css'
 
 interface IControlsProps {
@@ -15,10 +16,15 @@ export function Controls({ news }: IControlsProps) {
     dispatch(deleteNews(news.id))
   }
 
-  const handleFeature = () => {
-    dispatch(setFeature({ feature: !news.feature, id: news.id })
+  const handleFeatured = () => {
+    dispatch(featuredNews({ featured: !news.featured, id: news.id })
     )
   };
+
+  const classes = classNames(
+    news.featured ? styles.likeBtnRed : styles.likeBtn
+
+  )
 
   return (
     <div className={styles.controls}>
@@ -30,8 +36,8 @@ export function Controls({ news }: IControlsProps) {
       </button>
 
       <button
-        className={styles.likeBtn}
-        onClick={handleFeature}
+        className={classes}
+        onClick={handleFeatured}
       >
 
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24" focusable="false">

@@ -4,5 +4,5 @@ export interface INews {
   imageUrl: string,
   summary: string,
   url: string;
-  feature: boolean
+  featured: boolean
 }

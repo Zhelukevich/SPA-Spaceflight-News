@@ -42,12 +42,10 @@ export const NewsSlice = createSlice({
       });
     },
 
-    setFeature: (state, action: PayloadAction<{ feature: boolean; id: number }>) => {
-      // const index = state.findIndex((news) => news.id === action.payload.id);
-      // state[index].feature = action.payload.feature;
+    featuredNews: (state, action: PayloadAction<{ featured: boolean; id: number }>) => {
       const toggleNews = state.news.find(news => news.id === action.payload.id)
       if (toggleNews !== undefined) {
-        toggleNews.feature = !toggleNews?.feature
+        toggleNews.featured = !toggleNews?.featured
       }
 
     },
@@ -55,7 +53,7 @@ export const NewsSlice = createSlice({
   }
 })
 
-export const { fetching, fetchSuccess, fetchError, deleteNews, setFeature } = NewsSlice.actions;
+export const { fetching, fetchSuccess, fetchError, deleteNews, featuredNews } = NewsSlice.actions;
 
 export const news = (state: RootState) => state.news;
 
