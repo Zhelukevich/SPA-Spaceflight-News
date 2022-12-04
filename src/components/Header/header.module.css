@@ -33,15 +33,20 @@
   transition: color .2s linear;
 }
 
-.featured:hover {
+.featured:hover:enabled {
   color: rgb(0, 0, 133);
 }
 
-path {
-  transition: color .2s linear;
+.featured path {
+  transition: fill .2s linear;
 }
 
-.featured:hover path {
-  color: red;
+.featured:hover:enabled path {
+  fill: red;
+  /* color: rgba(0, 0, 0, 0); */
+  transition: fill .2s linear;
+}
 
+.featured:disabled {
+  cursor: auto;
 }

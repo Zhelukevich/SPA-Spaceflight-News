@@ -12,6 +12,12 @@ function App() {
   const [filtered, setFiltered] = useState(news);
 
   useEffect(() => {
+    const story = localStorage.getItem('news') ?? '[]'
+    JSON.parse(story)
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('news', JSON.stringify(news))
     setFiltered(news)
   }, [news])
 

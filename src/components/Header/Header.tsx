@@ -10,15 +10,24 @@ interface IHeaderProps {
 }
 
 export function Header({ setFiltered }: IHeaderProps) {
-  const { news } = useAppSelector(state => state.news)
+  const { news, filtered } = useAppSelector(state => state.news)
+
+  // function newsFilter(featured: boolean) {
+  //   if (featured === false) {
+  //     setFiltered(news)
+  //   } else {
+  //     let newNews = [...news].filter(news => news.featured === true)
+  //     setFiltered(newNews)
+  //   }
+  // }
+
 
   function newsFilter(featured: boolean) {
     if (featured === false) {
       setFiltered(news)
     } else {
-      let newNews = [...news].filter(news => news.featured === featured)
-      console.log(newNews);
-      setFiltered(newNews)
+      setFiltered(filtered)
+
     }
   }
 
@@ -35,6 +44,7 @@ export function Header({ setFiltered }: IHeaderProps) {
         </a>
         <button
           className={styles.featured}
+          disabled={filtered.length === 0}
           onMouseDown={() => newsFilter(true)}
           onMouseUp={() => newsFilter(false)}
         >

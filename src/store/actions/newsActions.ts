@@ -10,7 +10,7 @@ export const fetchNews = () => {
       const response = await axios.get<INews[]>('articles');
 
       dispatch(NewsSlice.actions.fetchSuccess(
-        response.data
+        response.data,
       ))
     } catch (e) {
       dispatch(NewsSlice.actions.fetchError(e as Error))
