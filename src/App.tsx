@@ -12,14 +12,16 @@ function App() {
   const [filtered, setFiltered] = useState(news);
 
   useEffect(() => {
-    const story = localStorage.getItem('news') ?? '[]'
-    JSON.parse(story)
-  }, [])
+    localStorage.setItem('news', JSON.stringify(news))
+  }, [news])
+
 
   useEffect(() => {
-    localStorage.setItem('news', JSON.stringify(news))
+    const story = localStorage.getItem('news') ?? '[]'
+    JSON.parse(story)
     setFiltered(news)
   }, [news])
+
 
   useEffect(() => {
     dispatch(fetchNews())
