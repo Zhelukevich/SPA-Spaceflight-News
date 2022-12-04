@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/SPA-Spaceflight-News/static/css/main.ef771042.css",
+    "main.js": "/SPA-Spaceflight-News/static/js/main.baf81f23.js",
+    "index.html": "/SPA-Spaceflight-News/index.html",
+    "main.ef771042.css.map": "/SPA-Spaceflight-News/static/css/main.ef771042.css.map",
+    "main.baf81f23.js.map": "/SPA-Spaceflight-News/static/js/main.baf81f23.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ef771042.css",
+    "static/js/main.baf81f23.js"
+  ]
+}
